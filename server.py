@@ -17,7 +17,8 @@ app.config["DEBUG"] = True
 @app.route('/data/domain/', methods=['GET'])
 def domain():
     data = load_from_file(data_file)
-    return data
+    data = json.loads(data)
+    return flask.jsonify(data)
 
 @app.route('/data/domain/<path:path>')
 def catch_all(path):
